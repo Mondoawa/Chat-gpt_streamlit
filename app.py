@@ -1,9 +1,11 @@
 import openai
 import streamlit as st
+import os
 
 from message_log import message_log
 
-api_key = "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"
+api_key = os.environ.get('CHATGPT_API_KEY')
+
 openai.api_key = api_key
 
 def generate_response(message_log):
