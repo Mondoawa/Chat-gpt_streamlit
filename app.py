@@ -4,7 +4,16 @@ import os
 
 from message_log import message_log
 
-api_key = os.environ.get('CHATGPT_API_KEY')
+# 打开credentials.txt文件
+with open("./credentials.txt", "r") as f:
+    # 从文件中读取行
+    lines = f.readlines()
+
+# 循环遍历所有行并找到包含API密钥的行
+for line in lines:
+    if "CHATGPT_API_KEY" in line:
+        # 从行中提取API密钥并去除空格和换行符
+        api_key = line.replace("CHATGPT_API_KEY=", "").strip()
 
 openai.api_key = api_key
 
